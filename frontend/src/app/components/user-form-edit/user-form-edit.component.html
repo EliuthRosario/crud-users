@@ -1,0 +1,66 @@
+<form class="user-form-edit" [formGroup]="userFormEdit" (submit)="updateUser()">
+  <h3 class="text-center">Editar Usuario</h3>
+  <div *ngIf="user">
+    <div class="mb-3">
+      <label for="idUsuario" class="form-label">ID</label>
+      <input
+        type="number"
+        [value]="user.idUsuario"
+        formControlName="idUsuario"
+        id="idUsuario"
+        class="form-control disabled"
+        placeholder=""
+        readonly
+      />
+      <div
+        *ngIf="userFormEdit.get('numeroIdentificacion')?.invalid"
+        class="text-danger"
+      >
+        ID es requerido
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="nombres" class="form-label">Nombres</label>
+      <input
+        type="text"
+        [value]="user.nombres"
+        formControlName="nombres"
+        id="nombres"
+        class="form-control"
+        placeholder=""
+      />
+      <div *ngIf="userFormEdit.get('nombres')?.invalid" class="text-danger">
+        Nombre es requerido.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Teléfono</label>
+      <input
+        type="number"
+        [value]="user.telefono"
+        formControlName="telefono"
+        id="telefono"
+        class="form-control"
+        placeholder=""
+      />
+      <div *ngIf="userFormEdit.get('telefono')?.invalid" class="text-danger">
+        Teléfono es requerido
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input
+        type="text"
+        [value]="user.direccion"
+        formControlName="direccion"
+        id="direccion"
+        class="form-control"
+        placeholder=""
+      />
+      <div *ngIf="userFormEdit.get('direccion')?.invalid" class="text-danger">
+        Dirección es requerida.
+      </div>
+    </div>
+    <input type="submit" class="btn btn-success mb-2" value="Guardar" />
+  </div>
+</form>

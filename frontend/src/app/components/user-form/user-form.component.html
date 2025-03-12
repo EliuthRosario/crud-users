@@ -1,0 +1,83 @@
+<div class="card text-dark bg-light border-2">
+  <h3 class="text-center">Agregar usuario</h3>
+  <div class="card-body">
+    <form class="user-form" [formGroup]="userForm" (submit)="agregarUsuario()">
+      <div class="mb-3">
+        <label for="idUsuario" class="form-label">ID</label>
+        <input
+          type="number"
+          formControlName="idUsuario"
+          id="idUsuario"
+          class="form-control"
+          placeholder=""
+        />
+        <div
+          *ngIf="
+            userForm.get('idUsuario')?.invalid &&
+            userForm.get('idUsuario')?.touched
+          "
+          class="text-danger"
+        >
+          ID es requerido y debe tener al menos 6 caracteres.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="nombres" class="form-label">Nombres</label>
+        <input
+          type="text"
+          formControlName="nombres"
+          id="nombres"
+          class="form-control"
+          placeholder=""
+        />
+        <div
+          *ngIf="
+            userForm.get('nombres')?.invalid && userForm.get('nombres')?.touched
+          "
+          class="text-danger"
+        >
+          Nombre es requerido.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <input
+          type="number"
+          formControlName="telefono"
+          id="telefono"
+          class="form-control"
+          placeholder=""
+        />
+        <div
+          *ngIf="
+            userForm.get('telefono')?.invalid &&
+            userForm.get('telefono')?.touched
+          "
+          class="text-danger"
+        >
+          Teléfono es requerido y debe tener al menos 10 caracteres.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input
+          type="text"
+          formControlName="direccion"
+          id="direccion"
+          class="form-control"
+          placeholder=""
+        />
+        <div
+          *ngIf="
+            userForm.get('direccion')?.invalid &&
+            userForm.get('direccion')?.touched
+          "
+          class="text-danger"
+        >
+          Dirección es requerida.
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success mb-2">Guardar</button>
+    </form>
+  </div>
+</div>

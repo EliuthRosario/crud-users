@@ -1,0 +1,65 @@
+<div class="d-flex justify-content-center mt-5">
+  <h4>Lista de usarios</h4>
+</div>
+<div class="table-responsive mt-5">
+  <table class="table">
+    <thead class="table-dark">
+      <tr>
+        <th>Num Identificación</th>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Direccion</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="isLoading">
+        <tr>
+          <td colspan="5">
+            <div class="d-flex justify-content-center align-items-center">
+              <div
+                class="spinner-border text-primary spinner-border-sm"
+                role="status"
+              >
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="usuarios.length > 0">
+        <tr *ngFor="let user of usuarios">
+          <td>{{ user.idUsuario }}</td>
+          <td>{{ user.nombres }}</td>
+          <td>{{ user.telefono }}</td>
+          <td>{{ user.direccion }}</td>
+          <td>
+            <div class="d-flex gap-2">
+              <button
+                type="button"
+                class="btn btn-primary"
+                [routerLink]="['user-form-edit', user.idUsuario]"
+              >
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                (click)="deteleUser(user.idUsuario)"
+              >
+                Eliminar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-container *ngIf="usuarios.length === 0">
+        <tr>
+          <td colspan="5">
+            <p class="text-center">No hay usuarios disponibles</p>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</div>
