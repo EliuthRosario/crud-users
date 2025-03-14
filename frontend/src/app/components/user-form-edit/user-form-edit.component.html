@@ -1,11 +1,10 @@
 <form class="user-form-edit" [formGroup]="userFormEdit" (submit)="updateUser()">
   <h3 class="text-center">Editar Usuario</h3>
-  <div *ngIf="user">
+  <div>
     <div class="mb-3">
       <label for="idUsuario" class="form-label">ID</label>
       <input
         type="number"
-        [value]="user.idUsuario"
         formControlName="idUsuario"
         id="idUsuario"
         class="form-control disabled"
@@ -23,7 +22,6 @@
       <label for="nombres" class="form-label">Nombres</label>
       <input
         type="text"
-        [value]="user.nombres"
         formControlName="nombres"
         id="nombres"
         class="form-control"
@@ -37,7 +35,6 @@
       <label for="telefono" class="form-label">Teléfono</label>
       <input
         type="number"
-        [value]="user.telefono"
         formControlName="telefono"
         id="telefono"
         class="form-control"
@@ -51,7 +48,6 @@
       <label for="direccion" class="form-label">Dirección</label>
       <input
         type="text"
-        [value]="user.direccion"
         formControlName="direccion"
         id="direccion"
         class="form-control"

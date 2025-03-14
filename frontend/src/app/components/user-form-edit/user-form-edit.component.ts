@@ -13,7 +13,6 @@ import { showAlert } from 'src/app/utils/mensajes';
 export class UserFormEditComponent implements OnInit {
   idUser: number = 0;
   userFormEdit: FormGroup;
-  user?: IUser;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,7 +50,6 @@ export class UserFormEditComponent implements OnInit {
   getUser(): void {
     if (this.idUser !== 0) {
       this.userService.getUserById(this.idUser).subscribe((data) => {
-        this.user = data;
         this.userFormEdit.patchValue(data);
       });
     }
